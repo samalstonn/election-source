@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Election {
+  id          Int          @id @default(autoincrement())
+  position    String
+  date        DateTime
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  active      Boolean
+  city        String
+  description String
+  positions   Int
+  state       String
+  type        ElectionType
+  candidates  Candidate[]
+}
+
+model Candidate {
+  name            String
+  party           String
+  policies        String[]
+  website         String?
+  electionId      Int
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  additionalNotes String?
+  city            String?
+  linkedin        String?
+  photo           String?
+  position        String
+  sources         String[]
+  state           String?
+  twitter         String?
+  verified        Boolean       @default(false)
+  donations       String[]
+  bio             String        @default("")
+  clerkUserId     String?       @unique
+  history         String[]
+  id              Int           @id @default(autoincrement()) @map("id")
+  election        Election      @relation(fields: [electionId], references: [id])
+  Testimonial     Testimonial[]
+  Vendor          Vendor[]
+}
+
+model PortfolioItem {
+  id          Int     @id @default(autoincrement())
+  vendorId    Int
+  title       String
+  imageUrl    String
+  description String?
+  Vendor      Vendor  @relation(fields: [vendorId], references: [id])
+}
+
+model ServiceCategory {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  Vendor Vendor[] @relation("VendorServices")
+}
+
+model Testimonial {
+  id          Int       @id @default(autoincrement())
+  vendorId    Int
+  candidateId Int
+  content     String
+  rating      Int
+  createdAt   DateTime  @default(now())
+  Candidate   Candidate @relation(fields: [candidateId], references: [id])
+  Vendor      Vendor    @relation(fields: [vendorId], references: [id])
+}
+
+model UserValidationRequest {
+  id             Int      @id @default(autoincrement())
+  fullName       String
+  email          String
+  phone          String
+  position       String
+  website        String?
+  linkedin       String?
+  twitter        String?
+  additionalInfo String?
+  city           String
+  state          String
+  candidateId    Int
+  clerkUserId    String   @unique
+  electionId     Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+}
+
+model Vendor {
+  id              Int               @id @default(autoincrement())
+  name            String
+  bio             String
+  website         String?
+  email           String
+  phone           String?
+  city            String
+  state           String
+  verified        Boolean           @default(false)
+  subscription    VendorTier        @default(FREE)
+  clerkUserId     String            @unique
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime
+  PortfolioItem   PortfolioItem[]
+  Testimonial     Testimonial[]
+  Candidate       Candidate[]
+  ServiceCategory ServiceCategory[] @relation("VendorServices")
+}
+
+enum ElectionType {
+  LOCAL
+  STATE
+  NATIONAL
+  UNIVERSITY
+}
+
+enum VendorTier {
+  FREE
+  STANDARD
+  PREMIUM
+}
