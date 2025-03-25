@@ -15,6 +15,7 @@ coverage/
 # Logs
 logs/
 *.log
+ai-logs/
 
 # Editor files
 .vscode/

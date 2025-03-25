@@ -11,25 +11,6 @@ The AI Data Logging functionality enhances the Election Source application by sa
 - Generates human-readable summaries of the parsed election data
 - Creates a run summary with statistics and metadata
 
-## Installation
-
-1. Copy the new utility files to your project:
-   ```
-   src/utils/ai-data-logger.ts
-   src/services/ai-logger-integration.ts
-   src/index-with-logging.ts
-   ```
-
-2. Make the run script executable:
-   ```bash
-   chmod +x run-with-logging.sh
-   ```
-
-3. If necessary, modify the Gemini API module to expose the required functions:
-   ```
-   src/apis/gemini/index.ts
-   ```
-
 ## Usage
 
 Run the application with AI data logging enabled:
