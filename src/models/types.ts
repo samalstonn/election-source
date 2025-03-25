@@ -48,6 +48,7 @@ export interface DetailedElection {
   description: string;
   type: ElectionType;
   candidates: Candidate[];
+  positions: number;
 }
 
 export interface TransformedData {
