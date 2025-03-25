@@ -1,0 +1,15 @@
+ELECTION SOURCE - RUN SUMMARY
+==============================
+
+Run ID: 2025-03-25_13-52-06
+Start time: 2025-03-25T17:52:06.368Z
+End time: 2025-03-25T17:53:41.492Z
+Duration: 95.12 seconds
+
+Elections processed: 13
+
+Directory structure:
+- ai-logs/2025-03-25_13-52-06/
+  |- civic-api/        # Google Civic API responses
+  |- gemini-research/   # Gemini research responses
+  |- gemini-json/       # Gemini structured JSON outputs

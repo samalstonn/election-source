@@ -1,0 +1,142 @@
+[
+  {
+    "position": "State Senator",
+    "date": "2025-03-25T00:00:00.000Z",
+    "city": "Lancaster County",
+    "state": "Pennsylvania",
+    "description": "As a lawmaker, a Senator proposes new laws or changes to existing laws. They also oversee the executive branch of government and its multi-billion dollar budget. Senators act as liaisons between district constituents and state government bureaucracy. They keep constituents informed on pending legislation and request their views on issues through surveys. They also represent the Commonwealth or legislative district at ceremonial state or local functions and work to resolve constituent disputes and other local problems.",
+    "type": "STATE",
+    "candidates": [
+      {
+        "fullName": "Josh Parsons",
+        "currentPosition": "Lancaster County Commissioner (Republican)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "Parsons is the Chair of the Lancaster County Board of Commissioners.",
+        "keyPolicies": [],
+        "additionalNotes": "Parsons secured the Republican nomination with 119 out of 197 votes, defeating Rep. Brett Miller.",
+        "sources": [
+          "PoliticsPA [8]",
+          "FOX43 [7, 10]"
+        ],
+        "party": "Republican",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "James Andrew Malone",
+        "currentPosition": "Mayor of East Petersburg (Democrat)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "Malone is the mayor of East Petersburg.",
+        "keyPolicies": [],
+        "additionalNotes": "Malone was chosen as the Democratic nominee by a two-thirds majority over Matthew Good.",
+        "sources": [
+          "PoliticsPA [8]",
+          "FOX43 [7, 10]",
+          "DLCC [12]"
+        ],
+        "party": "Democrat",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Zachary Moore",
+        "currentPosition": "Geographic Information Systems Analyst (Libertarian)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "Moore is a geographic information systems analyst.",
+        "keyPolicies": [],
+        "additionalNotes": "",
+        "sources": [
+          "PoliticsPA [8]",
+          "FOX43 [7, 10]"
+        ],
+        "party": "Libertarian",
+        "city": "Mount Joy",
+        "state": "PA",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "State Representative",
+    "date": "2025-03-25T00:00:00.000Z",
+    "city": "Western Pennsylvania, southeast of Pittsburgh, specifically District 35, Allegheny County",
+    "state": "Pennsylvania",
+    "description": "State Representatives are responsible for proposing new laws or changes to existing laws. They also work with staff to research issues involved in a bill and legislation on which the Senator will vote.",
+    "type": "STATE",
+    "candidates": [
+      {
+        "fullName": "Dan Goughnour",
+        "currentPosition": "McKeesport School Board Member and Police Officer (Democrat)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "Goughnour is a McKeesport school board member and a police officer.",
+        "keyPolicies": [],
+        "additionalNotes": "",
+        "sources": [
+          "AP News [1]",
+          "WPXI [3]",
+          "Ballotpedia [2]",
+          "Post-Gazette [6]"
+        ],
+        "party": "Democrat",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Chuck Davis (Charles D. Davis)",
+        "currentPosition": "President of the White Oak Borough Council and Volunteer Firefighter (Republican)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "Davis is the president of the White Oak Borough Council and a volunteer firefighter.",
+        "keyPolicies": [],
+        "additionalNotes": "",
+        "sources": [
+          "AP News [1]",
+          "WPXI [3]",
+          "Ballotpedia [2]",
+          "Post-Gazette [6]"
+        ],
+        "party": "Republican",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Adam Kitta",
+        "currentPosition": "Not specified",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "(Not specified in the provided context, but further research can be done on his campaign website or other sources).",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No description provided"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [
+          "AP News [1]",
+          "WPXI [3]",
+          "Ballotpedia [2]",
+          "Post-Gazette [6]"
+        ],
+        "party": "Libertarian",
+        "city": "White Oak",
+        "state": "PA",
+        "twitter": ""
+      }
+    ]
+  }
+]

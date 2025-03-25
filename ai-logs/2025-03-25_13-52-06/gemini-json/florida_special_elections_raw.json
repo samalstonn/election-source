@@ -1,0 +1,140 @@
+{
+  "elections": [
+    {
+      "position": "U.S. House of Representatives, District 1",
+      "date": "2025-04-01",
+      "city": "Florida",
+      "state": "Florida",
+      "description": "To fill the vacancy left by Matt Gaetz, who resigned.",
+      "type": "NATIONAL",
+      "candidates": [
+        {
+          "fullName": "Jimmy Patronis",
+          "party": "Republican",
+          "campaignUrl": "https://www.example.com",
+          "sources": []
+        },
+        {
+          "fullName": "Gay Valimont",
+          "party": "Democrat",
+          "campaignUrl": "https://www.example.com",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "position": "U.S. House of Representatives, District 6",
+      "date": "2025-04-01",
+      "city": "Florida",
+      "state": "Florida",
+      "description": "To fill the vacancy left by Michael Waltz, who resigned.",
+      "type": "NATIONAL",
+      "candidates": [
+        {
+          "fullName": "Joshua Weil",
+          "party": "Democrat",
+          "sources": []
+        },
+        {
+          "fullName": "Randy Fine",
+          "currentPosition": "State Senator from the 19th district (2024–present)",
+          "party": "Republican",
+          "sources": []
+        },
+        {
+          "fullName": "Andrew Parrott",
+          "party": "Libertarian",
+          "sources": []
+        },
+        {
+          "fullName": "Randall Terry",
+          "currentPosition": "No Party Affiliation",
+          "sources": []
+        },
+        {
+          "fullName": "Chuck Sheridan",
+          "currentPosition": "Independent (Write-in)",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "position": "Florida State Senate, District 19",
+      "date": "2025-04-01",
+      "city": "Florida",
+      "state": "Florida",
+      "description": null,
+      "type": "STATE",
+      "candidates": []
+    },
+    {
+      "position": "Florida State House, District 3",
+      "date": "2025-04-01",
+      "city": "Florida",
+      "state": "Florida",
+      "description": null,
+      "type": "STATE",
+      "candidates": []
+    },
+    {
+      "position": "Florida State House, District 32",
+      "date": "2025-04-01",
+      "city": "Florida",
+      "state": "Florida",
+      "description": null,
+      "type": "STATE",
+      "candidates": []
+    },
+    {
+      "position": "City of Cape Canaveral City Council Member",
+      "date": "2025-04-01",
+      "city": "Cape Canaveral",
+      "state": "Florida",
+      "description": "Electing members to the City Council.",
+      "type": "LOCAL",
+      "candidates": []
+    },
+    {
+      "position": "City of Indian Harbour Beach City Council, Seat 4",
+      "date": "2025-04-01",
+      "city": "Indian Harbour Beach",
+      "state": "Florida",
+      "description": "Electing a member to Seat 4 of the City Council.",
+      "type": "LOCAL",
+      "candidates": []
+    },
+    {
+      "position": "City of Rockledge City Council, Seat 2",
+      "date": "2025-04-01",
+      "city": "Rockledge",
+      "state": "Florida",
+      "description": "Electing a member to Seat 2 of the City Council.",
+      "type": "LOCAL",
+      "candidates": []
+    },
+    {
+      "position": "City of Miami Springs",
+      "date": "2025-04-01",
+      "city": "Miami Springs",
+      "state": "Florida",
+      "description": "Elections for Mayor and four City Council members (Group I, Group II, Group III, and Group IV).",
+      "type": "LOCAL",
+      "candidates": [
+        {
+          "fullName": "MaryJo Mejia Ramos",
+          "party": "Democrat",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "position": "DeFuniak Springs Election",
+      "date": "2025-04-08",
+      "city": "DeFuniak Springs",
+      "state": "Florida",
+      "description": "For registered voters living in incorporated DeFuniak Springs.",
+      "type": "LOCAL",
+      "candidates": []
+    }
+  ]
+}

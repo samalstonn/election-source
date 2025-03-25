@@ -1,0 +1,36 @@
+{
+  "elections": [
+    {
+      "position": "State Representative for District 113",
+      "date": "2025-03-25",
+      "city": "North Charleston and Summerville",
+      "state": "South Carolina",
+      "description": "A State Representative is a member of the South Carolina House of Representatives, the lower chamber of the South Carolina General Assembly. They are responsible for:\n    *   Passing bills on public policy matters.\n    *   Setting levels for state spending.\n    *   Raising and lowering taxes.\n    *   Voting to uphold or override gubernatorial vetoes.",
+      "type": "STATE",
+      "candidates": [
+        {
+          "fullName": "Courtney Waters",
+          "currentPosition": "Not specified",
+          "imageUrl": null,
+          "linkedinUrl": null,
+          "campaignUrl": null,
+          "description": "Specific details about Waters' background can be found in news articles. She is running for the seat vacated by Marvin Pendarvis.",
+          "keyPolicies": [
+            "Expanding affordable housing.",
+            "Improving child care options.",
+            "Protecting women's reproductive health."
+          ],
+          "additionalNotes": "Courtney Waters defeated Michelle Brandt and Kim Clark in the special Democratic primary held on January 21, 2025. Since no Republican candidates filed, Waters will face write-in opposition in the March 25 election.",
+          "sources": [
+            "https://abcnews4.com/news/local/early-voting-begins-for-house-district-113-primary-three-democrats-vie-for-vacant-seat-marvin-pendarvis-special-election-wciv-abc-news-4-01-08-2025#",
+            "https://ballotpedia.org/South_Carolina_House_of_Representatives_District_113"
+          ],
+          "party": "Democrat",
+          "city": null,
+          "state": null,
+          "twitter": null
+        }
+      ]
+    }
+  ]
+}

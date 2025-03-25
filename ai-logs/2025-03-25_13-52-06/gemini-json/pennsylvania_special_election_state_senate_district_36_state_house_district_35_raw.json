@@ -1,0 +1,105 @@
+{
+  "elections": [
+    {
+      "position": "State Senator",
+      "date": "2025-03-25",
+      "city": "Lancaster County",
+      "state": "Pennsylvania",
+      "description": "As a lawmaker, a Senator proposes new laws or changes to existing laws. They also oversee the executive branch of government and its multi-billion dollar budget. Senators act as liaisons between district constituents and state government bureaucracy. They keep constituents informed on pending legislation and request their views on issues through surveys. They also represent the Commonwealth or legislative district at ceremonial state or local functions and work to resolve constituent disputes and other local problems.",
+      "type": "STATE",
+      "candidates": [
+        {
+          "fullName": "Josh Parsons",
+          "currentPosition": "Lancaster County Commissioner (Republican)",
+          "description": "Parsons is the Chair of the Lancaster County Board of Commissioners.",
+          "keyPolicies": [],
+          "additionalNotes": "Parsons secured the Republican nomination with 119 out of 197 votes, defeating Rep. Brett Miller.",
+          "sources": [
+            "PoliticsPA [8]",
+            "FOX43 [7, 10]"
+          ],
+          "party": "Republican"
+        },
+        {
+          "fullName": "James Andrew Malone",
+          "currentPosition": "Mayor of East Petersburg (Democrat)",
+          "description": "Malone is the mayor of East Petersburg.",
+          "keyPolicies": [],
+          "additionalNotes": "Malone was chosen as the Democratic nominee by a two-thirds majority over Matthew Good.",
+          "sources": [
+            "PoliticsPA [8]",
+            "FOX43 [7, 10]",
+            "DLCC [12]"
+          ],
+          "party": "Democrat"
+        },
+        {
+          "fullName": "Zachary Moore",
+          "currentPosition": "Geographic Information Systems Analyst (Libertarian)",
+          "city": "Mount Joy",
+          "state": "PA",
+          "description": "Moore is a geographic information systems analyst.",
+          "keyPolicies": [],
+          "sources": [
+            "PoliticsPA [8]",
+            "FOX43 [7, 10]"
+          ],
+          "party": "Libertarian"
+        }
+      ]
+    },
+    {
+      "position": "State Representative",
+      "date": "2025-03-25",
+      "city": "Western Pennsylvania, southeast of Pittsburgh, specifically District 35, Allegheny County",
+      "state": "Pennsylvania",
+      "description": "State Representatives are responsible for proposing new laws or changes to existing laws. They also work with staff to research issues involved in a bill and legislation on which the Senator will vote.",
+      "type": "STATE",
+      "candidates": [
+        {
+          "fullName": "Dan Goughnour",
+          "currentPosition": "McKeesport School Board Member and Police Officer (Democrat)",
+          "description": "Goughnour is a McKeesport school board member and a police officer.",
+          "keyPolicies": [],
+          "sources": [
+            "AP News [1]",
+            "WPXI [3]",
+            "Ballotpedia [2]",
+            "Post-Gazette [6]"
+          ],
+          "party": "Democrat"
+        },
+        {
+          "fullName": "Chuck Davis (Charles D. Davis)",
+          "currentPosition": "President of the White Oak Borough Council and Volunteer Firefighter (Republican)",
+          "description": "Davis is the president of the White Oak Borough Council and a volunteer firefighter.",
+          "keyPolicies": [],
+          "sources": [
+            "AP News [1]",
+            "WPXI [3]",
+            "Ballotpedia [2]",
+            "Post-Gazette [6]"
+          ],
+          "party": "Republican"
+        },
+        {
+          "fullName": "Adam Kitta",
+          "currentPosition": "Not specified",
+          "city": "White Oak",
+          "state": "PA",
+          "description": "(Not specified in the provided context, but further research can be done on his campaign website or other sources).",
+          "keyPolicies": [
+            "Kitta understands he'll have influence on members from both sides of the aisle, calling it the “tiebreaking seat” in the state's capital."
+          ],
+          "sources": [
+            "AP News [1]",
+            "WPXI [3]",
+            "Ballotpedia [2]",
+            "Post-Gazette [6]"
+          ],
+          "party": "Libertarian"
+        }
+      ]
+    }
+  ]
+}

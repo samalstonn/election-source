@@ -1,0 +1,188 @@
+PARSED ELECTION DATA FOR: Florida Special Elections
+
+POSITION: U.S. House of Representatives, District 1
+Date: 2025-04-01
+Location: Florida, Florida
+Type: NATIONAL
+Description: To fill the vacancy left by Matt Gaetz, who resigned.
+
+CANDIDATES (2):
+[1] Jimmy Patronis
+    Position: Candidate
+    Party: Republican
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+[2] Gay Valimont
+    Position: Candidate
+    Party: Democrat
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+----------------------------------------
+
+POSITION: U.S. House of Representatives, District 6
+Date: 2025-04-01
+Location: Florida, Florida
+Type: NATIONAL
+Description: To fill the vacancy left by Michael Waltz, who resigned.
+
+CANDIDATES (5):
+[1] Joshua Weil
+    Position: Candidate
+    Party: Democrat
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+[2] Randy Fine
+    Position: State Senator from the 19th district (2024–present)
+    Party: Republican
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+[3] Andrew Parrott
+    Position: Candidate
+    Party: Libertarian
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+[4] Randall Terry
+    Position: No Party Affiliation
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+[5] Chuck Sheridan
+    Position: Independent (Write-in)
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+----------------------------------------
+
+POSITION: Florida State Senate, District 19
+Date: 2025-04-01
+Location: Florida, Florida
+Type: STATE
+Description: Position for Florida Special Elections
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: Florida State House, District 3
+Date: 2025-04-01
+Location: Florida, Florida
+Type: STATE
+Description: Position for Florida Special Elections
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: Florida State House, District 32
+Date: 2025-04-01
+Location: Florida, Florida
+Type: STATE
+Description: Position for Florida Special Elections
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: City of Cape Canaveral City Council Member
+Date: 2025-04-01
+Location: Cape Canaveral, Florida
+Type: LOCAL
+Description: Electing members to the City Council.
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: City of Indian Harbour Beach City Council, Seat 4
+Date: 2025-04-01
+Location: Indian Harbour Beach, Florida
+Type: LOCAL
+Description: Electing a member to Seat 4 of the City Council.
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: City of Rockledge City Council, Seat 2
+Date: 2025-04-01
+Location: Rockledge, Florida
+Type: LOCAL
+Description: Electing a member to Seat 2 of the City Council.
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+
+POSITION: City of Miami Springs
+Date: 2025-04-01
+Location: Miami Springs, Florida
+Type: LOCAL
+Description: Elections for Mayor and four City Council members (Group I, Group II, Group III, and Group IV).
+
+CANDIDATES (1):
+[1] MaryJo Mejia Ramos
+    Position: Candidate
+    Party: Democrat
+    Bio: No description provided
+    Key Policies:
+      - Policy: No specific policies mentioned
+
+----------------------------------------
+
+POSITION: DeFuniak Springs Election
+Date: 2025-04-08
+Location: DeFuniak Springs, Florida
+Type: LOCAL
+Description: For registered voters living in incorporated DeFuniak Springs.
+
+CANDIDATES (1):
+[1] Information Not Available
+    Position: Candidate
+    Bio: Candidate information could not be parsed
+    Key Policies:
+      - Policy: Information not available
+
+----------------------------------------
+

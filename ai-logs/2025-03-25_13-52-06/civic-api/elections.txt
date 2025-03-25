@@ -1,0 +1,43 @@
+GOOGLE CIVIC API ELECTION DATA
+Retrieved at: 2025-03-25T17:52:06.823Z
+
+Election #1:
+- Name: South Carolina Special Election - State House District 113
+- Date: 2025-03-25
+
+Election #2:
+- Name: Louisiana Municipal Primary, Proposition, and Special Election
+- Date: 2025-03-29
+
+Election #3:
+- Name: Wisconsin Spring Election
+- Date: 2025-04-01
+
+Election #4:
+- Name: Omaha, Nebraska City Primary Election
+- Date: 2025-04-01
+
+Election #5:
+- Name: Lincoln City, Nebraska Primary Election
+- Date: 2025-04-08
+
+Election #6:
+- Name: Pennsylvania Special Election - State Senate District 36 & State House District 35
+- Date: 2025-03-25
+
+Election #7:
+- Name: Florida Special Elections
+- Date: 2025-04-01
+
+Election #8:
+- Name: San Jose, California Special Election - Council District 3
+- Date: 2025-04-08
+
+Election #9:
+- Name: San Diego County, California Special Primary Election - San Diego County Board of Supervisor District 1
+- Date: 2025-04-08
+
+Election #10:
+- Name: South Carolina Special Primary Election - State House District 50
+- Date: 2025-04-01
+

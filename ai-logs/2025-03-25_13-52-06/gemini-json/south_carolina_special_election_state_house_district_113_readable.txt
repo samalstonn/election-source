@@ -1,0 +1,24 @@
+PARSED ELECTION DATA FOR: South Carolina Special Election - State House District 113
+
+POSITION: State Representative for District 113
+Date: 2025-03-25
+Location: North Charleston and Summerville, South Carolina
+Type: STATE
+Description: A State Representative is a member of the South Carolina House of Representatives, the lower chamber of the South Carolina General Assembly. They are responsible for:
+    *   Passing bills on public policy matters.
+    *   Setting levels for state spending.
+    *   Raising and lowering taxes.
+    *   Voting to uphold or override gubernatorial vetoes.
+
+CANDIDATES (1):
+[1] Courtney Waters
+    Position: Not specified
+    Party: Democrat
+    Bio: Specific details about Waters' background can be found in news articles. She is running for the seat...
+    Key Policies:
+      - Policy: No description provided
+      - Policy: No description provided
+      - Policy: No description provided
+
+----------------------------------------
+

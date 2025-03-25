@@ -1,0 +1,57 @@
+PARSED ELECTION DATA FOR: Pennsylvania Special Election - State Senate District 36 & State House District 35
+
+POSITION: State Senator
+Date: 2025-03-25
+Location: Lancaster County, Pennsylvania
+Type: STATE
+Description: As a lawmaker, a Senator proposes new laws or changes to existing laws. They also oversee the executive branch of government and its multi-billion dollar budget. Senators act as liaisons between district constituents and state government bureaucracy. They keep constituents informed on pending legislation and request their views on issues through surveys. They also represent the Commonwealth or legislative district at ceremonial state or local functions and work to resolve constituent disputes and other local problems.
+
+CANDIDATES (3):
+[1] Josh Parsons
+    Position: Lancaster County Commissioner (Republican)
+    Party: Republican
+    Bio: Parsons is the Chair of the Lancaster County Board of Commissioners.
+    Key Policies:
+
+[2] James Andrew Malone
+    Position: Mayor of East Petersburg (Democrat)
+    Party: Democrat
+    Bio: Malone is the mayor of East Petersburg.
+    Key Policies:
+
+[3] Zachary Moore
+    Position: Geographic Information Systems Analyst (Libertarian)
+    Party: Libertarian
+    Bio: Moore is a geographic information systems analyst.
+    Key Policies:
+
+----------------------------------------
+
+POSITION: State Representative
+Date: 2025-03-25
+Location: Western Pennsylvania, southeast of Pittsburgh, specifically District 35, Allegheny County, Pennsylvania
+Type: STATE
+Description: State Representatives are responsible for proposing new laws or changes to existing laws. They also work with staff to research issues involved in a bill and legislation on which the Senator will vote.
+
+CANDIDATES (3):
+[1] Dan Goughnour
+    Position: McKeesport School Board Member and Police Officer (Democrat)
+    Party: Democrat
+    Bio: Goughnour is a McKeesport school board member and a police officer.
+    Key Policies:
+
+[2] Chuck Davis (Charles D. Davis)
+    Position: President of the White Oak Borough Council and Volunteer Firefighter (Republican)
+    Party: Republican
+    Bio: Davis is the president of the White Oak Borough Council and a volunteer firefighter.
+    Key Policies:
+
+[3] Adam Kitta
+    Position: Not specified
+    Party: Libertarian
+    Bio: (Not specified in the provided context, but further research can be done on his campaign website or ...
+    Key Policies:
+      - Policy: No description provided
+
+----------------------------------------
+

@@ -1,0 +1,416 @@
+[
+  {
+    "position": "U.S. House of Representatives, District 1",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Florida",
+    "state": "Florida",
+    "description": "To fill the vacancy left by Matt Gaetz, who resigned.",
+    "type": "NATIONAL",
+    "candidates": [
+      {
+        "fullName": "Jimmy Patronis",
+        "currentPosition": "Candidate",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "https://www.example.com",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Republican",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Gay Valimont",
+        "currentPosition": "Candidate",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "https://www.example.com",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Democrat",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "U.S. House of Representatives, District 6",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Florida",
+    "state": "Florida",
+    "description": "To fill the vacancy left by Michael Waltz, who resigned.",
+    "type": "NATIONAL",
+    "candidates": [
+      {
+        "fullName": "Joshua Weil",
+        "currentPosition": "Candidate",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Democrat",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Randy Fine",
+        "currentPosition": "State Senator from the 19th district (2024–present)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Republican",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Andrew Parrott",
+        "currentPosition": "Candidate",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Libertarian",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Randall Terry",
+        "currentPosition": "No Party Affiliation",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      },
+      {
+        "fullName": "Chuck Sheridan",
+        "currentPosition": "Independent (Write-in)",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "Florida State Senate, District 19",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Florida",
+    "state": "Florida",
+    "description": "Position for Florida Special Elections",
+    "type": "STATE",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "Florida State House, District 3",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Florida",
+    "state": "Florida",
+    "description": "Position for Florida Special Elections",
+    "type": "STATE",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "Florida State House, District 32",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Florida",
+    "state": "Florida",
+    "description": "Position for Florida Special Elections",
+    "type": "STATE",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "City of Cape Canaveral City Council Member",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Cape Canaveral",
+    "state": "Florida",
+    "description": "Electing members to the City Council.",
+    "type": "LOCAL",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "City of Indian Harbour Beach City Council, Seat 4",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Indian Harbour Beach",
+    "state": "Florida",
+    "description": "Electing a member to Seat 4 of the City Council.",
+    "type": "LOCAL",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "City of Rockledge City Council, Seat 2",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Rockledge",
+    "state": "Florida",
+    "description": "Electing a member to Seat 2 of the City Council.",
+    "type": "LOCAL",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "City of Miami Springs",
+    "date": "2025-04-01T00:00:00.000Z",
+    "city": "Miami Springs",
+    "state": "Florida",
+    "description": "Elections for Mayor and four City Council members (Group I, Group II, Group III, and Group IV).",
+    "type": "LOCAL",
+    "candidates": [
+      {
+        "fullName": "MaryJo Mejia Ramos",
+        "currentPosition": "Candidate",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "description": "No description provided",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "No specific policies mentioned"
+          }
+        ],
+        "additionalNotes": "",
+        "sources": [],
+        "party": "Democrat",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  },
+  {
+    "position": "DeFuniak Springs Election",
+    "date": "2025-04-08T00:00:00.000Z",
+    "city": "DeFuniak Springs",
+    "state": "Florida",
+    "description": "For registered voters living in incorporated DeFuniak Springs.",
+    "type": "LOCAL",
+    "candidates": [
+      {
+        "fullName": "Information Not Available",
+        "currentPosition": "Candidate",
+        "description": "Candidate information could not be parsed",
+        "keyPolicies": [
+          {
+            "title": "Policy",
+            "description": "Information not available"
+          }
+        ],
+        "sources": [
+          "Information provided by AI"
+        ],
+        "additionalNotes": "",
+        "imageUrl": "",
+        "linkedinUrl": "",
+        "campaignUrl": "",
+        "party": "",
+        "city": "Unknown",
+        "state": "Unknown",
+        "twitter": ""
+      }
+    ]
+  }
+]

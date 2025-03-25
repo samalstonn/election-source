@@ -12,7 +12,7 @@ const model = 'gemini-2.0-flash';
  * @param useGrounding - Whether to use Google Search grounding
  * @returns The response from Gemini
  */
-async function callGeminiApi(
+export async function callGeminiApi(
   prompt: string, 
   useGrounding = true,
   conversationHistory: {role: string, text: string}[] = []
@@ -95,7 +95,7 @@ async function callGeminiApi(
  * @param election - Basic election information
  * @returns The formatted research query
  */
-function generateResearchQuery(election: BasicElection): string {
+export function generateResearchQuery(election: BasicElection): string {
   return `
   I need comprehensive information about the "${election.name}" scheduled for ${election.date.toISOString().split('T')[0]}.
 
@@ -129,7 +129,7 @@ function generateResearchQuery(election: BasicElection): string {
  * @param basicElection - Basic election information
  * @returns Prompt for the AI transformation
  */
-function generateTransformationPrompt(researchResponse: string, basicElection: BasicElection): string {
+export function generateTransformationPrompt(researchResponse: string, basicElection: BasicElection): string {
   return `
   I have an unstructured text response about the "${basicElection.name}" election scheduled for ${basicElection.date.toISOString().split('T')[0]}.
   
@@ -222,7 +222,7 @@ export async function getDetailedElectionInfo(basicElection: BasicElection): Pro
  * @param basicElection - Basic election information (for fallback)
  * @returns Array of DetailedElection objects
  */
-function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicElection): DetailedElection[] {
+export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicElection): DetailedElection[] {
   try {
     logger.info('Parsing AI-generated JSON response');
     
