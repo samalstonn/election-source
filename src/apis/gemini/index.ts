@@ -107,7 +107,6 @@ export function generateResearchQuery(election: BasicElection): string {
      - City and State
      - Brief description of the role and its responsibilities
      - Categorize the position as local, state, or federal
-     - Number of seats up for election
 
   2. For each position, provide details about each candidate running:
      - Full name
@@ -146,7 +145,6 @@ export function generateTransformationPrompt(researchResponse: string, basicElec
         "state": "string", // State where the election is held
         "description": "string", // Description of the position
         "type": "LOCAL" | "STATE" | "NATIONAL" | "UNIVERSITY", // Type of election
-        "positions": "number", // Number of seats available
         "candidates": [
           {
             "fullName": "string", // Full name of the candidate
@@ -327,7 +325,6 @@ export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicE
         state: election.state || 'Unknown',
         description: election.description || `Position for ${basicElection.name}`,
         type: electionType,
-        positions: election.positions || 1,
         candidates
       };
     });
@@ -369,7 +366,6 @@ function createFallbackElection(basicElection: BasicElection): DetailedElection[
           ElectionType.STATE : 
           (basicElection.name.toLowerCase().includes('national') ? 
            ElectionType.NATIONAL : ElectionType.LOCAL),
-    positions: 1, // Assume 1 position unless specified
     candidates: [{
       fullName: 'Information Not Available',
       currentPosition: 'Candidate',
