@@ -6,6 +6,7 @@ export enum ElectionType {
 }
 
 export interface BasicElection {
+  name: string;
   state: string;
   district: string;
   description: string;

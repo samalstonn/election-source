@@ -58,10 +58,12 @@ export async function getElectionsFromCsv(filePath: string): Promise<BasicElecti
       // Map to BasicElection format
       const elections: BasicElection[] = parseResult.data.map((row: any, index: number) => {
         // Extract State,District,Description,Date
+
         const state = row.name?.trim();
         const district = row.name?.trim();
         const description = row.name?.trim();
         const dateStr = row.date?.trim();
+        const name = state+","+district+","+description+","+dateStr;
         
         if (!state || !district || !description || !dateStr) {
           logger.error(`Missing required fields in CSV row ${index + 1}`, { row });
@@ -80,6 +82,7 @@ export async function getElectionsFromCsv(filePath: string): Promise<BasicElecti
           district,
           description,
           date,
+          name,
         };
       });
       

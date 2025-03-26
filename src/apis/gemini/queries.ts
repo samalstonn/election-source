@@ -12,7 +12,18 @@ export function generateElectionQuery(election: BasicElection): string {
     description: ${election.district},
     date: ${election.date.toISOString().split('T')[0]}
 
-    Next, list all positions up for election as an array of JSON objects. Each position object must strictly follow this format:
+    Next, list all positions up for election as an array of JSON objects. 
+  {
+    "state": ${election.state},
+    "district": ${election.district},
+    "description":  ${election.district},
+    "date": ${election.date.toISOString().split('T')[0]}
+    "positions_up_for_election":   
+      [
+    "position list goes here"
+      ]
+  }
+    Each position object must strictly follow this format WITH NO EXCEPTIONS:
 
     {
     "position_name": "Position name (e.g., 'Mayor', 'Council Member', 'County Circuit Court Judge - Branch 41')",
@@ -29,7 +40,7 @@ export function generateElectionQuery(election: BasicElection): string {
     - Structured Format: Present the output EXCLUSIVELY in JSON format following the exact schema provided above.
     - Follow Format: Do not include any additional details such as constitutional amendment voting, other key dates or resources, or information on elections in other states.
 
-    IMPORTANT: Please ONLY respond with the valid JSON object, nothing else. Your response must be valid, parseable JSON.
+    IMPORTANT: Please ONLY respond with the valid JSON object, NOTHING ELSE. Your response must be valid, parseable JSON.
 `}
 
     
@@ -63,7 +74,7 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
         "name": "Full legal name",
         "position": "Current position (e.g., 'Incumbent Village Mayor' or 'Business Owner')",
         "party": "All political party affiliations",
-        "image_url": "Confirm the URL is accurate. If not available or unverified, mark as 'N/A'",
+        "image_url": "Does not need to be searched. Mark as 'N/A'",
         "linkedin_url": "Confirm the URL is accurate. If not available or unverified, mark as 'N/A'",
         "campaign_website_url": "Confirm the URL is accurate. If not available or unverified, mark as 'N/A'",
         "description": "A comprehensive background including education, experience, and career history",
@@ -88,19 +99,22 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
 
 /**
  * Generates a prompt for the AI to transform unstructured data into structured JSON
- * @param researchResponse - The unstructured response from Gemini research
+ * @param researchResponse[] - The unstructured responses from Gemini research of candidates
  * @param basicElection - Basic election information
  * @returns Prompt for the AI transformation
  */
-export function generateTransformationPrompt(researchResponse: string[], election: BasicElection): string {
+export function generateTransformationPrompt(
+  candidatesWithPositions: Array<{position: DetailedPosition, candidatesResponse: string}>,
+  election: BasicElection
+): string {
   return `
-  I have an json text response about the following election:
+  I have a list of json text response about the following election:
     state: ${election.state},
     district: ${election.district},
     description: ${election.district},
     date: ${election.date.toISOString().split('T')[0]}
   
-  Your task is to analyze this response and create a structured JSON object that follows the schema below. Extract all available information about positions and candidates.
+  Your task is to analyze each response and create a compiled structured JSON object that follows the schema below. Extract all available information about positions and candidates.
   
   Here's the schema to follow:
 {
@@ -111,7 +125,7 @@ export function generateTransformationPrompt(researchResponse: string[], electio
       "city": "string",
       "state": "string",
       "description": "string",
-      "type": "LOCAL",
+      "type": "LOCAL" | "STATE" | "NATIONAL",
       "candidates": [
         {
           "fullName": "string",
@@ -141,7 +155,7 @@ export function generateTransformationPrompt(researchResponse: string[], electio
   
   Here's the text to analyze:
   
-  ${researchResponse}
+  ${candidatesWithPositions}
   
   Please ONLY respond with the valid JSON object, nothing else. Your response must be valid, parseable JSON.
   `;

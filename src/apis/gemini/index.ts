@@ -2,7 +2,7 @@ import { config } from '../../config';
 import logger from '../../utils/logger';
 import { DetailedElection, BasicElection, ElectionType, Candidate, CandidatePolicy } from '../../models/types';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { generateResearchQuery, generateTransformationPrompt } from './queries';
+import { generateElectionQuery, generateCandidatesQuery, generateTransformationPrompt } from './queries';
 
 // Update to use the latest Gemini model
 const model1 = "gemini-2.5-pro-exp-03-25"
@@ -94,46 +94,6 @@ export async function callGeminiApi(
       error: error instanceof Error ? error.message : String(error),
     });
     throw new Error('Failed to get response from Gemini: ' + (error instanceof Error ? error.message : String(error)));
-  }
-}
-
-/**
- * Uses Gemini Deep Research to get detailed election and candidate information
- * @param basicElection - Basic election information from Civic API
- * @returns Promise with detailed election data
- */
-export async function getDetailedElectionInfo(basicElection: BasicElection): Promise<DetailedElection[]> {
-  try {
-    logger.info(`Getting detailed information for election: ${basicElection.name}`);
-    
-    // Step 1: Get detailed research from Gemini with Google Search grounding
-    const researchQuery = generateResearchQuery(basicElection);
-    const geminiResponse = await callGeminiApi(researchQuery, true); // Enable Google Search grounding
-    
-    logger.info('Successfully received detailed election information from Gemini');
-    
-    // Step 2: Use AI to transform the unstructured data into structured JSON
-    const transformationPrompt = generateTransformationPrompt(geminiResponse, basicElection);
-    
-    // Create conversation history for transformation
-    const conversationHistory = [
-      { role: 'user', text: researchQuery },
-      { role: 'model', text: geminiResponse }
-    ];
-    
-    logger.info('Sending transformation request to Gemini for JSON structuring');
-    const structuredJsonResponse = await callGeminiApi(transformationPrompt, false, conversationHistory);
-    
-    logger.info('Successfully received structured JSON from Gemini');
-    
-    // Step 3: Parse the JSON response
-    return parseAIGeneratedJson(structuredJsonResponse, basicElection);
-  } catch (error) {
-    logger.error('Error getting detailed election information from Gemini', {
-      error: error instanceof Error ? error.message : String(error),
-      election: basicElection.name,
-    });
-    throw new Error('Failed to get detailed election information');
   }
 }
 
