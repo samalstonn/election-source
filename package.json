@@ -7,6 +7,7 @@
     "dev": "ts-node src/index.ts",
     "dev:single": "ELECTION_LIMIT=1 ts-node src/index.ts",
     "dev:limited": "ELECTION_LIMIT=3 ts-node src/index.ts",
+    "dev:csv": "ts-node src/index.ts --csv",
     "start": "node dist/index.js",
     "build": "tsc",
     "test": "jest",
@@ -40,6 +41,7 @@
     "google-auth-library": "^9.4.2",
     "googleapis": "^130.0.0",
     "node-fetch": "^2.7.0",
+    "papaparse": "^5.5.2",
     "path": "^0.12.7",
     "prisma": "^5.9.1",
     "winston": "^3.11.0",
@@ -48,6 +50,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.5",
+    "@types/papaparse": "^5.3.15",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
     "tsx": "^4.7.0",

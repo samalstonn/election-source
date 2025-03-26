@@ -1,26 +1,44 @@
+// src/services/ai-logger-integration.ts
 import { AIDataLogger } from '../utils/ai-data-logger';
 import logger from '../utils/logger';
 import { getActiveElections } from '../apis/civic';
+import { getElectionsFromCsv } from '../apis/csv';
 import { getDetailedElectionInfo } from '../apis/gemini';
 import { BasicElection, DetailedElection } from '../models/types';
 import { config } from '../config';
+import { generateResearchQuery, generateTransformationPrompt } from '../apis/gemini';
 
 /**
  * Enhanced version of the existing aggregateElectionData function
  * that logs AI model outputs during processing
  */
-export async function aggregateElectionDataWithLogging(): Promise<DetailedElection[]> {
+export async function aggregateElectionDataWithLogging(options?: {
+  csvFilePath?: string
+}): Promise<DetailedElection[]> {
   const startTime = new Date();
   const aiLogger = new AIDataLogger();
   
   try {
     logger.info('Starting election data aggregation with AI data logging');
     
-    // Step 1: Get basic election data from Google Civic API
-    const basicElections = await getActiveElections();
+    // Step 1: Get basic election data from the selected data source
+    let basicElections: BasicElection[] = [];
     
-    // Log Civic API results
-    aiLogger.logCivicApiData(basicElections);
+    if (options?.csvFilePath) {
+      // Get elections from CSV file
+      logger.info(`Using CSV file as data source: ${options.csvFilePath}`);
+      basicElections = await getElectionsFromCsv(options.csvFilePath);
+      
+      // Log CSV election data
+      aiLogger.logCsvElectionData(basicElections, options.csvFilePath);
+    } else {
+      // Get basic election data from Google Civic API
+      logger.info('Using Google Civic API as data source');
+      basicElections = await getActiveElections();
+      
+      // Log Civic API results
+      aiLogger.logCivicApiData(basicElections);
+    }
     
     if (basicElections.length === 0) {
       logger.warn('No active elections found, aggregation process stopped');
@@ -44,12 +62,6 @@ export async function aggregateElectionDataWithLogging(): Promise<DetailedElecti
       logger.info(`Processing election ${index + 1}/${electionsToProcess.length}: ${election.name}`);
       
       try {
-        // Get the research query and response
-        const researchQuery = generateResearchQuery(election);
-        
-        // We need to access the private function from the Gemini API
-        // For logging purposes, we'll modify our approach to log the raw responses
-        
         // Make the request to Gemini API and get the raw research response
         const { rawResearch, structuredJson, detailedInfo } = await getDetailedElectionInfoWithRawResponses(election);
         
@@ -93,38 +105,6 @@ export async function aggregateElectionDataWithLogging(): Promise<DetailedElecti
     
     throw new Error('Election data aggregation with logging failed');
   }
-}
-
-/**
- * Helper function to generate a research query for an election
- * This is a copy of the function from the Gemini API to maintain consistency
- */
-function generateResearchQuery(election: BasicElection): string {
-  return `
-  I need comprehensive information about the "${election.name}" scheduled for ${election.date.toISOString().split('T')[0]}.
-
-  Please provide the following details:
-
-  1. List of all positions up for election including:
-     - Position name (e.g., "Mayor", "Council Member")
-     - Election date (if different from the main election date)
-     - City and State
-     - Brief description of the role and its responsibilities
-     - Categorize the position as local, state, or federal
-
-  2. For each position, provide details about each candidate running:
-     - Full name
-     - Current position (e.g., "Incumbent Village Mayor – Democrat")
-     - Image URL (if available)
-     - LinkedIn profile URL (if available)
-     - Campaign website URL
-     - Full description of the candidate's background
-     - Key policies (up to 5 major policies)
-     - Additional notes about the candidate
-     - Sources used to gather the information
-
-  Please provide up-to-date information with proper citations. For recent developments in this election, search online sources.
-  `;
 }
 
 /**
@@ -177,67 +157,4 @@ async function getDetailedElectionInfoWithRawResponses(
     });
     throw error;
   }
-}
-
-/**
- * Helper function to generate a transformation prompt for the AI
- * This is a copy of the function from the Gemini API to maintain consistency
- */
-function generateTransformationPrompt(researchResponse: string, basicElection: BasicElection): string {
-  return `
-  I have an unstructured text response about the "${basicElection.name}" election scheduled for ${basicElection.date.toISOString().split('T')[0]}.
-  
-  Your task is to analyze this response and create a structured JSON object that follows the schema below. Extract all available information about positions and candidates.
-  
-  Here's the schema to follow:
-  {
-    "elections": [
-      {
-        "position": "string", // Position name like "Mayor" or "Council Member"
-        "date": "YYYY-MM-DD", // Date of the election
-        "city": "string", // City where the election is held
-        "state": "string", // State where the election is held
-        "description": "string", // Description of the position
-        "type": "LOCAL" | "STATE" | "NATIONAL" | "UNIVERSITY", // Type of election
-        "candidates": [
-          {
-            "fullName": "string", // Full name of the candidate
-            "currentPosition": "string", // Current position, e.g., "Incumbent Mayor - Democrat"
-            "imageUrl": "string (optional)", // URL to candidate's image
-            "linkedinUrl": "string (optional)", // LinkedIn profile URL
-            "campaignUrl": "string (optional)", // Campaign website URL
-            "description": "string", // Background of the candidate
-            "keyPolicies": ["string"], // list of key policies of the candidate
-            "additionalNotes": "string (optional)", // Additional notes
-            "sources": ["string"], // List of sources
-            "party": "string (optional)", // Political party
-            "city": "string (optional)", // City candidate is from
-            "state": "string (optional)", // State candidate is from
-            "twitter": "string (optional)" // Twitter handle
-          }
-        ]
-      }
-    ]
-  }
-  
-  If information is missing, make reasonable inferences or leave fields blank. Ensure the JSON is valid with no syntax errors.
-  
-  Here's the unstructured text to analyze:
-  
-  ${researchResponse}
-  
-  Please ONLY respond with the valid JSON object, nothing else. Your response must be valid, parseable JSON.
-  `;
-}
-
-/**
- * Parse the AI-generated JSON response into DetailedElection objects
- * This is a simplified version of the function from the Gemini API
- */
-function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicElection): DetailedElection[] {
-  // Import the necessary function from the gemini API
-  const { parseAIGeneratedJson } = require('../apis/gemini');
-  
-  // Call the existing function to parse the JSON
-  return parseAIGeneratedJson(jsonResponse, basicElection);
 }

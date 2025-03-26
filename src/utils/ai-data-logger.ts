@@ -1,3 +1,4 @@
+// src/utils/ai-data-logger.ts
 import fs from 'fs';
 import path from 'path';
 import logger from './logger';
@@ -49,7 +50,7 @@ export class AIDataLogger {
       logger.info(`Created run directory: ${this.currentRunDir}`);
       
       // Create subdirectories for different data types
-      const subdirs = ['civic-api', 'gemini-research', 'gemini-json'];
+      const subdirs = ['civic-api', 'csv-input', 'gemini-research', 'gemini-json'];
       
       subdirs.forEach(subdir => {
         const fullPath = path.join(this.currentRunDir, subdir);
@@ -103,6 +104,64 @@ export class AIDataLogger {
       logger.info(`Logged Civic API data to ${filePath} and ${textFilePath}`);
     } catch (error) {
       logger.error('Error logging Civic API data', {
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
+  /**
+   * Logs CSV-sourced election data
+   * @param elections - Array of elections from the CSV file
+   * @param csvFilePath - Path to the original CSV file
+   */
+  public logCsvElectionData(elections: BasicElection[], csvFilePath: string): void {
+    try {
+      const filePath = path.join(this.currentRunDir, 'csv-input', 'elections.json');
+      
+      // Create a more human-readable format
+      const formattedData = elections.map(election => ({
+        name: election.name,
+        date: election.date.toISOString().split('T')[0], // YYYY-MM-DD format
+        timestamp: this.timestamp,
+        source: `CSV File: ${path.basename(csvFilePath)}`
+      }));
+      
+      // Write the formatted data to a JSON file
+      fs.writeFileSync(
+        filePath,
+        JSON.stringify(formattedData, null, 2), // Pretty print with 2 spaces
+        'utf8'
+      );
+      
+      // Also create a human-readable text version
+      const textFilePath = path.join(this.currentRunDir, 'csv-input', 'elections.txt');
+      let textContent = 'CSV FILE ELECTION DATA\n';
+      textContent += `Source: ${csvFilePath}\n`;
+      textContent += `Retrieved at: ${new Date().toISOString()}\n\n`;
+      
+      elections.forEach((election, index) => {
+        textContent += `Election #${index + 1}:\n`;
+        textContent += `- Name: ${election.name}\n`;
+        textContent += `- Date: ${election.date.toISOString().split('T')[0]}\n\n`;
+      });
+      
+      fs.writeFileSync(textFilePath, textContent, 'utf8');
+      
+      // Additionally, save a copy of the original CSV file
+      try {
+        const originalCsvContent = fs.readFileSync(csvFilePath, 'utf8');
+        fs.writeFileSync(
+          path.join(this.currentRunDir, 'csv-input', path.basename(csvFilePath)),
+          originalCsvContent,
+          'utf8'
+        );
+      } catch (copyError) {
+        logger.warn(`Could not copy original CSV file: ${String(copyError)}`);
+      }
+      
+      logger.info(`Logged CSV election data to ${filePath} and ${textFilePath}`);
+    } catch (error) {
+      logger.error('Error logging CSV election data', {
         error: error instanceof Error ? error.message : String(error),
       });
     }
@@ -243,9 +302,25 @@ export class AIDataLogger {
       content += `End time: ${endTime.toISOString()}\n`;
       content += `Duration: ${duration.toFixed(2)} seconds\n\n`;
       content += `Elections processed: ${electionCount}\n\n`;
+      
+      // Check source type
+      if (fs.existsSync(path.join(this.currentRunDir, 'csv-input', 'elections.json'))) {
+        content += 'Data source: CSV file\n\n';
+      } else {
+        content += 'Data source: Google Civic API\n\n';
+      }
+      
       content += 'Directory structure:\n';
       content += `- ${this.currentRunDir}/\n`;
-      content += `  |- civic-api/        # Google Civic API responses\n`;
+      
+      if (fs.existsSync(path.join(this.currentRunDir, 'civic-api'))) {
+        content += `  |- civic-api/        # Google Civic API responses\n`;
+      }
+      
+      if (fs.existsSync(path.join(this.currentRunDir, 'csv-input'))) {
+        content += `  |- csv-input/        # CSV input data\n`;
+      }
+      
       content += `  |- gemini-research/   # Gemini research responses\n`;
       content += `  |- gemini-json/       # Gemini structured JSON outputs\n`;
       
@@ -271,5 +346,3 @@ export class AIDataLogger {
       .toLowerCase();
   }
 }
-
-export default AIDataLogger;

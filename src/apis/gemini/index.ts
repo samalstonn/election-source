@@ -2,9 +2,12 @@ import { config } from '../../config';
 import logger from '../../utils/logger';
 import { DetailedElection, BasicElection, ElectionType, Candidate, CandidatePolicy } from '../../models/types';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { generateResearchQuery, generateTransformationPrompt } from './queries';
 
 // Update to use the latest Gemini model
-const model = 'gemini-2.0-flash';
+const model1 = "gemini-2.5-pro-exp-03-25"
+const model2 = 'gemini-2.0-flash';
+const model = model1;
 
 /**
  * Function to make API calls to Gemini with streaming support
@@ -36,8 +39,8 @@ export async function callGeminiApi(
 
     // Configure the request
     const generationConfig = {
-      temperature: 0.7,
-      maxOutputTokens: 8192,
+      temperature: 0,
+      maxOutputTokens: 25000,
       topP: 0.95,
       topK: 40,
     };
@@ -64,6 +67,10 @@ export async function callGeminiApi(
         { googleSearch: {} }
       ];
       logger.info('Using Google Search grounding for Gemini request');
+    } else {
+      const model = model2;
+      requestParams.model = model;
+      logger.info(`No grounding tools enabled for Gemini request. Using model: ${model2}`);
     }
 
     // Debug log the request
@@ -88,92 +95,6 @@ export async function callGeminiApi(
     });
     throw new Error('Failed to get response from Gemini: ' + (error instanceof Error ? error.message : String(error)));
   }
-}
-
-/**
- * Generates a detailed research query for an election
- * @param election - Basic election information
- * @returns The formatted research query
- */
-export function generateResearchQuery(election: BasicElection): string {
-  return `
-  I need comprehensive information about the "${election.name}" scheduled for ${election.date.toISOString().split('T')[0]}.
-
-  Please provide the following details:
-
-  1. List of all positions up for election including:
-     - Position name (e.g., "Mayor", "Council Member")
-     - Election date (if different from the main election date)
-     - City and State
-     - Brief description of the role and its responsibilities
-     - Categorize the position as local, state, or federal
-
-  2. For each position, provide details about each candidate running:
-     - Full name
-     - Current position (e.g., "Incumbent Village Mayor – Democrat")
-     - Image URL (if available)
-     - LinkedIn profile URL (if available)
-     - Campaign website URL
-     - Full description of the candidate's background
-     - Key policies (up to 5 major policies)
-     - Additional notes about the candidate
-     - Sources used to gather the information
-
-  Please provide up-to-date information with proper citations. For recent developments in this election, search online sources.
-  `;
-}
-
-/**
- * Generates a prompt for the AI to transform unstructured data into structured JSON
- * @param researchResponse - The unstructured response from Gemini research
- * @param basicElection - Basic election information
- * @returns Prompt for the AI transformation
- */
-export function generateTransformationPrompt(researchResponse: string, basicElection: BasicElection): string {
-  return `
-  I have an unstructured text response about the "${basicElection.name}" election scheduled for ${basicElection.date.toISOString().split('T')[0]}.
-  
-  Your task is to analyze this response and create a structured JSON object that follows the schema below. Extract all available information about positions and candidates.
-  
-  Here's the schema to follow:
-  {
-    "elections": [
-      {
-        "position": "string", // Position name like "Mayor" or "Council Member"
-        "date": "YYYY-MM-DD", // Date of the election
-        "city": "string", // City where the election is held
-        "state": "string", // State where the election is held
-        "description": "string", // Description of the position
-        "type": "LOCAL" | "STATE" | "NATIONAL" | "UNIVERSITY", // Type of election
-        "candidates": [
-          {
-            "fullName": "string", // Full name of the candidate
-            "currentPosition": "string", // Current position, e.g., "Incumbent Mayor - Democrat"
-            "imageUrl": "string (optional)", // URL to candidate's image
-            "linkedinUrl": "string (optional)", // LinkedIn profile URL
-            "campaignUrl": "string (optional)", // Campaign website URL
-            "description": "string", // Background of the candidate
-            "keyPolicies": ["string"], // list of key policies of the candidate
-            "additionalNotes": "string (optional)", // Additional notes
-            "sources": ["string"], // List of sources
-            "party": "string (optional)", // Political party
-            "city": "string (optional)", // City candidate is from
-            "state": "string (optional)", // State candidate is from
-            "twitter": "string (optional)" // Twitter handle
-          }
-        ]
-      }
-    ]
-  }
-  
-  If information is missing, make reasonable inferences or leave fields blank. Ensure the JSON is valid with no syntax errors.
-  
-  Here's the unstructured text to analyze:
-  
-  ${researchResponse}
-  
-  Please ONLY respond with the valid JSON object, nothing else. Your response must be valid, parseable JSON.
-  `;
 }
 
 /**
@@ -236,7 +157,7 @@ export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicE
     // Basic validation
     if (!parsedData.elections || !Array.isArray(parsedData.elections)) {
       logger.warn('Invalid JSON structure: missing or invalid elections array');
-      return createFallbackElection(basicElection);
+      return [];
     }
     
     // Map to our DetailedElection type
@@ -279,50 +200,31 @@ export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicE
             // Validate sources
             const sources: string[] = Array.isArray(candidate.sources)
               ? candidate.sources
-              : ['Information provided by AI'];
+              : ['No sources found'];
               
             return {
-              fullName: candidate.fullName || 'Unknown Candidate',
+              fullName: candidate.fullName || '',
               currentPosition: candidate.currentPosition || 'Candidate',
               imageUrl: candidate.imageUrl || '',
               linkedinUrl: candidate.linkedinUrl || '',
               campaignUrl: candidate.campaignUrl || '',
-              description: candidate.description || 'No description provided',
+              description: candidate.description || 'No description found',
               keyPolicies,
               additionalNotes: candidate.additionalNotes || '',
               sources,
-              party: candidate.party || '',
+              party: candidate.party || 'No party found',
               city: candidate.city || 'Unknown',
               state: candidate.state || 'Unknown',
               twitter: candidate.twitter || ''
             };
           })
         : [];
-        
-      // If no candidates were found, create a placeholder
-      if (candidates.length === 0) {
-        candidates.push({
-          fullName: 'Information Not Available',
-          currentPosition: 'Candidate',
-          description: 'Candidate information could not be parsed',
-          keyPolicies: [{ title: 'Policy', description: 'Information not available' }],
-          sources: ['Information provided by AI'],
-          additionalNotes: '',
-          imageUrl: '',
-          linkedinUrl: '',
-          campaignUrl: '',
-          party: '',
-          city: 'Unknown',
-          state: 'Unknown',
-          twitter: ''
-        });
-      }
       
       return {
         position: election.position || basicElection.name,
         date: electionDate,
-        city: election.city || 'Unknown',
-        state: election.state || 'Unknown',
+        city: election.city || '',
+        state: election.state || '',
         description: election.description || `Position for ${basicElection.name}`,
         type: electionType,
         candidates
@@ -332,7 +234,7 @@ export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicE
     // If no elections were parsed, create a fallback
     if (detailedElections.length === 0) {
       logger.warn('No elections found in AI-generated JSON');
-      return createFallbackElection(basicElection);
+      return []
     }
     
     logger.info(`Successfully parsed ${detailedElections.length} elections with ${detailedElections.reduce((sum, e) => sum + e.candidates.length, 0)} candidates total`);
@@ -342,44 +244,6 @@ export function parseAIGeneratedJson(jsonResponse: string, basicElection: BasicE
       error: error instanceof Error ? error.message : String(error),
       jsonPreview: jsonResponse.substring(0, 200) + '...'
     });
-    return createFallbackElection(basicElection);
+    return [];
   }
 }
-
-/**
- * Creates a fallback election when parsing fails
- * @param basicElection - Basic election information
- * @returns Array with a single fallback election
- */
-function createFallbackElection(basicElection: BasicElection): DetailedElection[] {
-  logger.warn(`Creating fallback election for ${basicElection.name}`);
-  
-  return [{
-    position: basicElection.name.replace(/Election - /, '').replace(/.*State /, 'State '),
-    date: basicElection.date,
-    city: 'Information Not Available',
-    state: basicElection.name.match(/([A-Z]{2})/) ? 
-           basicElection.name.match(/([A-Z]{2})/)?.[1] || 'Unknown' : 
-           basicElection.name.split(' ')[0],
-    description: `Position for ${basicElection.name}`,
-    type: basicElection.name.toLowerCase().includes('state') ? 
-          ElectionType.STATE : 
-          (basicElection.name.toLowerCase().includes('national') ? 
-           ElectionType.NATIONAL : ElectionType.LOCAL),
-    candidates: [{
-      fullName: 'Information Not Available',
-      currentPosition: 'Candidate',
-      description: 'Candidate information could not be retrieved',
-      keyPolicies: [{ title: 'Policy', description: 'Information not available' }],
-      sources: ['Fallback information due to processing error'],
-      additionalNotes: '',
-      imageUrl: '',
-      linkedinUrl: '',
-      campaignUrl: '',
-      party: '',
-      city: 'Unknown',
-      state: 'Unknown',
-      twitter: ''
-    }]
-  }];
-} 

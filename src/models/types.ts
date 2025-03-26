@@ -6,7 +6,9 @@ export enum ElectionType {
 }
 
 export interface BasicElection {
-  name: string;
+  state: string;
+  district: string;
+  description: string;
   date: Date;
 }
 
@@ -17,6 +19,7 @@ export interface DetailedPosition {
   state: string;
   description: string;
   type: ElectionType;
+  positions: number;
 }
 
 export interface CandidatePolicy {
