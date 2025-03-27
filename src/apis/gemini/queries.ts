@@ -28,7 +28,7 @@ export function generateElectionQuery(election: BasicElection): string {
     {
     "position_name": "Position name (e.g., 'Mayor', 'Council Member', 'County Circuit Court Judge - Branch 41')",
     "city": "City where the election is taking place (if it is a state or federal election, put 'N/A')",
-    "state": "State where the election is taking place (if it is a federal election, put 'N/A')",
+    "state": "State where the election is taking place (if it is a federal election, put 'N/A'). Make sure the state is NOT in abbreviated form (eg. NOT NY or PA).",
     "description": "Brief description of the role and its responsibilities",
     "position_type": "Categorize the position as 'local', 'state', or 'federal'",
     "positions": "Number of seats up for election"
@@ -76,11 +76,11 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
         "party": "All political party affiliations",
         "image_url": "Does not need to be searched. Mark as 'N/A'",
         "linkedin_url": "Confirm the URL is accurate. If not available or unverified, mark as 'N/A'",
-        "campaign_website_url": "Confirm the URL is accurate. If not available or unverified, mark as 'N/A'",
+        "campaign_website_url": "Does not need to be searched. Mark as 'N/A'",
         "description": "A comprehensive background including education, experience, and career history",
         "key_policies": ["Up to 5 major policies the candidate supports"],
         "home_city": "The candidate’s hometown city. If not available or unverified, mark as 'N/A'",
-        "hometown_state": "The candidate’s hometown state. If not available or unverified, mark as 'N/A'",
+        "hometown_state": "The candidate’s hometown state. Make sure the state is NOT in abbreviated form (eg. NOT NY or PA). If not available or unverified, mark as 'N/A'",
         "additional_notes": "Any extra information (e.g., relevant controversies, endorsements, or unique campaign aspects)",
         "sources": ["A list of verified sources (with URLs) used to gather this information"]
         }
@@ -118,12 +118,12 @@ export function generateTransformationPrompt(
   
   Here's the schema to follow:
 {
-  "election": [
+  "elections": [
     {
       "position": "string",
       "date": "YYYY-MM-DD",
       "city": "string",
-      "state": "string",
+      "state": "string" Make sure the state is NOT in abbreviated form (eg. NOT NY or PA),
       "description": "string",
       "type": "LOCAL" | "STATE" | "NATIONAL",
       "candidates": [
@@ -143,7 +143,7 @@ export function generateTransformationPrompt(
           ],
           "party": "string",
           "city": "string",
-          "state": "string",
+          "state": "string" Make sure the state is NOT in abbreviated form (eg. NOT NY or PA),
           "twitter": "string"
         }
       ]

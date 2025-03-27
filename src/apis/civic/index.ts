@@ -35,10 +35,7 @@ export async function getActiveElections(): Promise<BasicElection[]> {
     logger.info(`Retrieved ${response.data.elections.length} elections from Civic API (${realElections.length} after filtering out test elections)`);
     
     // Extract and transform the basic election data
-    return realElections.map(election => ({
-      name: election.name || 'Unknown Election',
-      date: election.electionDay ? new Date(election.electionDay) : new Date(),
-    }));
+    return [];
   } catch (error) {
     logger.error('Error fetching elections from Google Civic API', {
       error: error instanceof Error ? error.message : String(error),

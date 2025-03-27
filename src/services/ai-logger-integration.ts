@@ -120,6 +120,7 @@ async function getDetailedElectionInfoWithRawResponses(
 }> {
   // Import necessary modules and functions
   const { callGeminiApi } = require('../apis/gemini/index');
+  const aiLogger = new AIDataLogger();
   
   try {
     logger.info(`Getting detailed information with raw responses for election: ${basicElection.name}`);
@@ -129,17 +130,20 @@ async function getDetailedElectionInfoWithRawResponses(
     
     // Step 2: Get detailed positions list from Gemini with Google Search grounding
     const rawPositions = await callGeminiApi(researchQuery, true);
+    
+    // Log the election query and response
+    aiLogger.logElectionQuery(basicElection.name, researchQuery, rawPositions);
 
     // add 1 minute timeout 
-    await new Promise(resolve => setTimeout(resolve, 60000));
-    logger.info('One minute timeout');
+    await new Promise(resolve => setTimeout(resolve, 30000));
+    logger.info('30 second timeout');
 
     // Step 3: Validate the raw positions response
-    // this should return a list of positions to query candidates for
     const detailedPositions = validateRawPositions(rawPositions, basicElection);
 
     // Step 4: Get detailed list of candidates for each position
-    const detailedCandidates = await getDetailedCandidatesInfo(detailedPositions, basicElection);
+    const detailedCandidates = await getDetailedCandidatesInfoWithLogging(detailedPositions, basicElection, aiLogger);
+    
     
     // Step 5: Generate the transformation prompt
     const transformationPrompt = generateTransformationPrompt(detailedCandidates, basicElection);
@@ -150,9 +154,10 @@ async function getDetailedElectionInfoWithRawResponses(
       { role: 'model', text: rawPositions },
     ];
     for (const candidate of detailedCandidates) {
-      conversationHistory.push({ role: 'model', text: candidate });
+      // Only use the candidatesResponse string, not the whole object
+      conversationHistory.push({ role: 'model', text: candidate.candidatesResponse });
     }
-    
+
     // Step 6: Transform unstructured data to structured JSON
     const structuredJson = await callGeminiApi(transformationPrompt, false, conversationHistory);
     
@@ -269,16 +274,11 @@ function validateRawPositions(
     return [];
   }
 }
-  
-/**
- * Get detailed candidate information for each position
- * @param detailedPositions - Array of positions to get candidate info for
- * @param basicElection - Basic election information
- * @returns Promise with array of objects containing position details and candidate info
- */
-async function getDetailedCandidatesInfo(
+
+async function getDetailedCandidatesInfoWithLogging(
   detailedPositions: DetailedPosition[],
-  basicElection: BasicElection
+  basicElection: BasicElection,
+  aiLogger: AIDataLogger
 ): Promise<Array<{position: DetailedPosition, candidatesResponse: string}>> {
   try {
     if (detailedPositions.length === 0) {
@@ -302,6 +302,14 @@ async function getDetailedCandidatesInfo(
         // Call Gemini API with Google Search grounding enabled
         const candidateResponse = await callGeminiApi(candidatesQuery, true);
         
+        // Log the candidate query and response
+        aiLogger.logCandidateQuery(
+          basicElection.name, 
+          position.positionName, 
+          candidatesQuery, 
+          candidateResponse
+        );
+        
         // Add the response and position to our collection
         results.push({
           position: position,
@@ -310,11 +318,11 @@ async function getDetailedCandidatesInfo(
         
         logger.info(`Successfully retrieved candidate information for position: ${position.positionName}`);
         
-        // Add a significant delay between calls to avoid rate limiting
-        // Skip delay after the last position
-        logger.info(`Waiting 60 seconds before querying next position to avoid rate limiting...`);
-        await new Promise(resolve => setTimeout(resolve, 60000)); // 60 second delay
-
+        // Add delay between calls to avoid rate limiting
+        if (i < detailedPositions.length - 1) {
+          logger.info(`Waiting 30 seconds before querying next position to avoid rate limiting...`);
+          await new Promise(resolve => setTimeout(resolve, 30000)); // 30 second delay
+        }
       } catch (error) {
         logger.error(`Failed to get candidate info for position: ${position.positionName}`, {
           error: error instanceof Error ? error.message : String(error),
@@ -328,8 +336,8 @@ async function getDetailedCandidatesInfo(
         
         // Add delay even after error to maintain rate limiting pattern
         if (i < detailedPositions.length - 1) {
-          logger.info(`Waiting 60 seconds before querying next position (after error)...`);
-          await new Promise(resolve => setTimeout(resolve, 60000)); // 60 second delay
+          logger.info(`Waiting 30 seconds before querying next position (after error)...`);
+          await new Promise(resolve => setTimeout(resolve, 30000));
         }
       }
     }

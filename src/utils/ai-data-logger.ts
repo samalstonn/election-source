@@ -50,7 +50,7 @@ export class AIDataLogger {
       logger.info(`Created run directory: ${this.currentRunDir}`);
       
       // Create subdirectories for different data types
-      const subdirs = ['civic-api', 'csv-input', 'gemini-research', 'gemini-json'];
+      const subdirs = ['civic-api', 'csv-input', 'gemini-research', 'gemini-json', 'gemini-queries'];
       
       subdirs.forEach(subdir => {
         const fullPath = path.join(this.currentRunDir, subdir);
@@ -310,6 +310,7 @@ export class AIDataLogger {
         content += 'Data source: Google Civic API\n\n';
       }
       
+          
       content += 'Directory structure:\n';
       content += `- ${this.currentRunDir}/\n`;
       
@@ -323,6 +324,8 @@ export class AIDataLogger {
       
       content += `  |- gemini-research/   # Gemini research responses\n`;
       content += `  |- gemini-json/       # Gemini structured JSON outputs\n`;
+      content += `  |- gemini-queries/    # Gemini queries and responses\n`;
+
       
       fs.writeFileSync(filePath, content, 'utf8');
       
@@ -345,4 +348,70 @@ export class AIDataLogger {
       .replace(/_+/g, '_')         // Replace multiple underscores with single
       .toLowerCase();
   }
+  /**
+ * Logs Gemini's election query for a specific election
+ * @param electionName - Name of the election
+ * @param query - The query sent to Gemini
+ * @param response - The response from Gemini
+ */
+public logElectionQuery(electionName: string, query: string, response: string): void {
+  try {
+    // Sanitize election name for file naming
+    const sanitizedName = this.sanitizeFileName(electionName);
+    
+    const filePath = path.join(this.currentRunDir, 'gemini-queries', `${sanitizedName}_election_query.txt`);
+    
+    // Add header information
+    let content = `GEMINI ELECTION QUERY - ${electionName}\n`;
+    content += `Generated at: ${new Date().toISOString()}\n`;
+    content += `Run: ${this.timestamp}\n\n`;
+    content += `=== QUERY ===\n\n${query}\n\n`;
+    content += `=== RESPONSE ===\n\n${response}`;
+    
+    fs.writeFileSync(filePath, content, 'utf8');
+    
+    logger.info(`Logged Gemini election query for "${electionName}" to ${filePath}`);
+  } catch (error) {
+    logger.error(`Error logging Gemini election query for "${electionName}"`, {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
 }
+
+/**
+ * Logs Gemini's candidate queries for a specific position
+ * @param electionName - Name of the election
+ * @param positionName - Name of the position
+ * @param query - The query sent to Gemini
+ * @param response - The response from Gemini
+ */
+public logCandidateQuery(electionName: string, positionName: string, query: string, response: string): void {
+  try {
+    // Sanitize names for file naming
+    const sanitizedElection = this.sanitizeFileName(electionName);
+    const sanitizedPosition = this.sanitizeFileName(positionName);
+    
+    const filePath = path.join(
+      this.currentRunDir, 
+      'gemini-queries', 
+      `${sanitizedElection}_${sanitizedPosition}_candidate_query.txt`
+    );
+    
+    // Add header information
+    let content = `GEMINI CANDIDATE QUERY - ${electionName} - ${positionName}\n`;
+    content += `Generated at: ${new Date().toISOString()}\n`;
+    content += `Run: ${this.timestamp}\n\n`;
+    content += `=== QUERY ===\n\n${query}\n\n`;
+    content += `=== RESPONSE ===\n\n${response}`;
+    
+    fs.writeFileSync(filePath, content, 'utf8');
+    
+    logger.info(`Logged Gemini candidate query for "${positionName}" to ${filePath}`);
+  } catch (error) {
+    logger.error(`Error logging Gemini candidate query for "${positionName}"`, {
+      error: error instanceof Error ? error.message : String(error),
+    });
+  }
+}
+}
+

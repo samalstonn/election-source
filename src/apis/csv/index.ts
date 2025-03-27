@@ -47,25 +47,20 @@ export async function getElectionsFromCsv(filePath: string): Promise<BasicElecti
         logger.error('CSV file contains no data rows');
         throw new Error(`CSV file contains no data rows. Please provide a valid CSV file with election data.`);
       }
-      
-      // Check if required columns exist
-      const firstRow = parseResult.data[0] as any;
-      if (!firstRow.hasOwnProperty('name') || !firstRow.hasOwnProperty('date')) {
-        logger.error('CSV file missing required columns', { columns: Object.keys(firstRow) });
-        throw new Error(`CSV file must have 'name' and 'date' columns. Found columns: ${Object.keys(firstRow).join(', ')}`);
-      }
+    
       
       // Map to BasicElection format
       const elections: BasicElection[] = parseResult.data.map((row: any, index: number) => {
         // Extract State,District,Description,Date
 
-        const state = row.name?.trim();
-        const district = row.name?.trim();
-        const description = row.name?.trim();
-        const dateStr = row.date?.trim();
+        const state = row.State?.trim();
+        const district = row.District?.trim();
+        const description = row.Description?.trim();
+        const dateStr = row.Date?.trim();
         const name = state+","+district+","+description+","+dateStr;
         
         if (!state || !district || !description || !dateStr) {
+          logger.info(state, district, description, dateStr);
           logger.error(`Missing required fields in CSV row ${index + 1}`, { row });
           throw new Error(`CSV row ${index + 1} missing required fields: all of State,District,Description,Date are required.`);
         }

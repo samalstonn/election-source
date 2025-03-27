@@ -1,4 +1,13 @@
-name,date
-"South Carolina Special Election - State House District 113","2025-03-25"
-"Pennsylvania Special Election - State Senate District 36 & State House District 35","2025-03-25"
-"Florida Special Elections","2025-04-01"
+State,District,Description,Date
+Louisiana,Louisiana statewide primary,Louisiana statewide primary,2025-03-29
+Oklahoma,Mooreland Public Schools,Moore Public Schools general election,2025-04-01
+Oklahoma,Oklahoma,"Municipal and countywide, O.K.,",2025-04-01
+Oklahoma,Oklahoma County Commission District 1,Special general for Oklahoma County Commission District 1,2025-04-01
+Oklahoma,Oklahoma House of Representatives District 71,Special primary for Oklahoma House of Representatives District 71,2025-04-01
+Oklahoma,Oklahoma House of Representatives District 74,Special primary for Oklahoma House of Representatives District 74,2025-04-01
+Oklahoma,Oklahoma State Senate District 8,Special primary runoff for Oklahoma State Senate District 8,2025-04-01
+Oklahoma,Piedmont Public Schools,Piedmont Public Schools special general,2025-04-01
+Oklahoma,Tulsa Public Schools,Tulsa Public Schools general election,2025-04-01
+Oklahoma,Tulsa Tech,General election for the Tulsa Technology Center Board of Education,2025-04-01
+Oklahoma,Yukon Public Schools,Yukon Public Schools general election,2025-04-01
+South Carolina,South Carolina,"S.C., special municipal general elections",2025-04-01
