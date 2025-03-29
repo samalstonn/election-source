@@ -1,7 +1,7 @@
-import { BasicElection, DetailedPosition } from '../../models/types';
+import { BasicElection, DetailedPosition } from "../../models/types";
 
 export function generateElectionQuery(election: BasicElection): string {
-    return `
+  return `
     Act as a diligent and thorough researcher to gather detailed, accurate, and up-to-date election information. 
     Your task is to provide comprehensive details about the below election.
     Please verify every detail carefully; if any information cannot be confirmed as accurate or is not available, mark it as "N/A."
@@ -10,14 +10,14 @@ export function generateElectionQuery(election: BasicElection): string {
     state: ${election.state},
     district: ${election.district},
     description: ${election.district},
-    date: ${election.date.toISOString().split('T')[0]}
+    date: ${election.date.toISOString().split("T")[0]}
 
     Next, list all positions up for election as an array of JSON objects. 
   {
     "state": ${election.state},
     "district": ${election.district},
     "description":  ${election.district},
-    "date": ${election.date.toISOString().split('T')[0]}
+    "date": ${election.date.toISOString().split("T")[0]}
     "positions_up_for_election":   
       [
     "position list goes here"
@@ -41,15 +41,18 @@ export function generateElectionQuery(election: BasicElection): string {
     - Follow Format: Do not include any additional details such as constitutional amendment voting, other key dates or resources, or information on elections in other states.
 
     IMPORTANT: Please ONLY respond with the valid JSON object, NOTHING ELSE. Your response must be valid, parseable JSON.
-`}
+`;
+}
 
-    
 /**
  * Generates a detailed research query for an election
  * @param election - Basic election information
  * @returns The formatted research query
  */
-export function generateCandidatesQuery(election: BasicElection, position: DetailedPosition): string {
+export function generateCandidatesQuery(
+  election: BasicElection,
+  position: DetailedPosition
+): string {
   return `
     Act as a diligent and thorough researcher to gather detailed, accurate, and up-to-date election information. Your task is to provide comprehensive details about all candidates for the below election details.
     Please take your time to verify every piece of information carefully to avoid inaccuracies—especially for URLs. If a link cannot be confirmed as accurate or is not available, mark it as "N/A."
@@ -58,7 +61,7 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
     state: ${election.state},
     district: ${election.district},
     description: ${election.district},
-    date: ${election.date.toISOString().split('T')[0]}
+    date: ${election.date.toISOString().split("T")[0]}
 
     position_name: ${position.positionName},
     city: ${position.city},
@@ -82,7 +85,7 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
         "home_city": "The candidate’s hometown city. If not available or unverified, mark as 'N/A'",
         "hometown_state": "The candidate’s hometown state. Make sure the state is NOT in abbreviated form (eg. NOT NY or PA). If not available or unverified, mark as 'N/A'",
         "additional_notes": "Any extra information (e.g., relevant controversies, endorsements, or unique campaign aspects)",
-        "sources": ["A list of verified sources (with URLs) used to gather this information"]
+        "sources": ["A list of verified sources (no need for URLs just general page description) used to gather this information"]
         }
     ]
     }
@@ -104,7 +107,10 @@ export function generateCandidatesQuery(election: BasicElection, position: Detai
  * @returns Prompt for the AI transformation
  */
 export function generateTransformationPrompt(
-  candidatesWithPositions: Array<{position: DetailedPosition, candidatesResponse: string}>,
+  candidatesWithPositions: Array<{
+    position: DetailedPosition;
+    candidatesResponse: string;
+  }>,
   election: BasicElection
 ): string {
   return `
@@ -112,7 +118,7 @@ export function generateTransformationPrompt(
     state: ${election.state},
     district: ${election.district},
     description: ${election.district},
-    date: ${election.date.toISOString().split('T')[0]}
+    date: ${election.date.toISOString().split("T")[0]}
   
   Your task is to analyze each response and create a compiled structured JSON object that follows the schema below. Extract all available information about positions and candidates.
   

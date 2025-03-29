@@ -1,13 +1,12 @@
-State,District,Description,Date
-Louisiana,Louisiana statewide primary,Louisiana statewide primary,2025-03-29
-Oklahoma,Mooreland Public Schools,Moore Public Schools general election,2025-04-01
-Oklahoma,Oklahoma,"Municipal and countywide, O.K.,",2025-04-01
-Oklahoma,Oklahoma County Commission District 1,Special general for Oklahoma County Commission District 1,2025-04-01
-Oklahoma,Oklahoma House of Representatives District 71,Special primary for Oklahoma House of Representatives District 71,2025-04-01
-Oklahoma,Oklahoma House of Representatives District 74,Special primary for Oklahoma House of Representatives District 74,2025-04-01
-Oklahoma,Oklahoma State Senate District 8,Special primary runoff for Oklahoma State Senate District 8,2025-04-01
-Oklahoma,Piedmont Public Schools,Piedmont Public Schools special general,2025-04-01
-Oklahoma,Tulsa Public Schools,Tulsa Public Schools general election,2025-04-01
-Oklahoma,Tulsa Tech,General election for the Tulsa Technology Center Board of Education,2025-04-01
-Oklahoma,Yukon Public Schools,Yukon Public Schools general election,2025-04-01
-South Carolina,South Carolina,"S.C., special municipal general elections",2025-04-01
+State         , District                             , Description                                                                 , Date
+South Carolina, South Carolina                       , "S.C., special municipal general elections"                                 , 2025-04-01
+Alaska        , Anchorage                            , Anchorage general election                                                  , 2025-04-01
+Alabama       , Tuscaloosa City Schools              , Tuscaloosa City Schools general runoff election                             , 2025-04-01
+Florida       , Florida                              , Florida municipal elections                                                 , 2025-04-01
+Colorado      , Colorado Springs                     , Colorado Springs general election                                           , 2025-04-01
+Illinois      , Illinois                             , Illinois statewide municipal general election                               , 2025-04-01
+Nebraska      , Omaha                                , Omaha primary election                                                      , 2025-04-01
+Delaware      , Blades                               , "Local election in the town of Blades, Delaware"                            , 2025-04-07
+Missouri      , North Kansas City Schools            , North Kansas City Schools general election                                  , 2025-04-08
+Kansas        , Haysville Unified School District 261, "Haysville Unified School District, Kansas, special ballot measure election", 2025-04-08
+Georgia       , Bowman                               , Recall election                                                             , 2025-04-08
